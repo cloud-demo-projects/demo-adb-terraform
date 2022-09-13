@@ -23,11 +23,8 @@ variable "project" {
 
 variable "databricks_sku" {
   type        = string
-  description = <<EOT
-        (Optional) The SKU to use for the databricks instance"
-        Default: standard
-    EOT
-    default     = "standard"
+  description = "(Optional) The SKU to use for the databricks instance"
+  default     = "standard"
 
   validation {
     condition     = can(regex("standard|premium|trial", var.databricks_sku))
