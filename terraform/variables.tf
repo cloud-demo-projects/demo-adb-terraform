@@ -7,6 +7,7 @@ variable "location" {
 variable "environment" {
   type        = string
   description = "(Required) Three character environment name"
+  default     = "d"
 
   validation {
     condition     = length(var.environment) <= 3
@@ -17,15 +18,16 @@ variable "environment" {
 variable "project" {
   type        = string
   description = "(Required) The project name"
+  default     = "adb"
 }
 
 variable "databricks_sku" {
   type        = string
   description = <<EOT
-    (Optional) The SKU to use for the databricks instance"
-
-    Default: standard
-EOT
+        (Optional) The SKU to use for the databricks instance"
+        Default: standard
+    EOT
+    default     = "standard"
 
   validation {
     condition     = can(regex("standard|premium|trial", var.databricks_sku))
